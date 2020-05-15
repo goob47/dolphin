@@ -3,6 +3,7 @@
 // Refer to the license.txt file included.
 
 #import "EmulationViewController.h"
+#import "ExternalEmulationViewController.h"
 
 #import <utility>
 #import <variant>
@@ -40,6 +41,9 @@
 #import "VideoCommon/RenderBase.h"
 
 @interface EmulationViewController ()
+{
+  UIWindow *externalWindow;
+}
 
 @end
 
@@ -115,6 +119,59 @@
     self.m_stop_button,
     self.m_pause_button
   ];
+  
+  // Account for external screen being connected during emulation
+  //[self SetupScreenNotifications];
+  
+  if ([[UIScreen screens] count] > 1)
+  {
+    [self setupExternalScreen:[UIScreen screens][1]];
+  }
+}
+
+/* NOT WORKING FOR NOW - Needs method to hotswap the view being used for emulation output
+- (void)SetupScreenNotifications
+{
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(externalScreenDidConnect:) name:UIScreenDidConnectNotification object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(externalScreenDidConnect:) name:UIScreenDidDisconnectNotification object:nil];
+}
+
+- (void)externalScreenDidConnect:(NSNotification*)notification
+{
+  UIScreen *screen = (UIScreen *)[notification object];
+  if (screen != nil)
+  {
+    [self setupExternalScreen:screen];
+  }
+}
+
+- (void)externalScreenDidDisconnect:(NSNotification *)notification
+{
+  id obj = [notification object];
+  if (obj != nil)
+  {
+    [self tearDownExternalScreen];
+  }
+}
+ */
+
+- (void)setupExternalScreen:(UIScreen *)screen
+{
+  ExternalEmulationViewController *vc = [[self storyboard] instantiateViewControllerWithIdentifier:@"ExternalScreen"];
+  externalWindow = [[UIWindow alloc] initWithFrame:screen.bounds];
+  externalWindow.rootViewController = vc;
+  externalWindow.screen = screen;
+  
+  externalWindow.hidden = false;
+}
+
+- (void)tearDownExternalScreen
+{
+  if (externalWindow != nil)
+  {
+    externalWindow.hidden = true;
+    externalWindow = nil;
+  }
 }
 
 - (void)StartEmulation
@@ -134,7 +191,15 @@
     self.m_ipl_region = DiscIO::Region::Unknown;
   }
   
-  [MainiOS startEmulationWithBootParameters:std::move(self->m_boot_parameters) viewController:self view:self.m_renderer_view];
+  // If an external screen is detected, start game on the MTKView of ExternalEmulationViewController
+  if ([[UIScreen screens] count] > 1)
+  {
+    [MainiOS startEmulationWithBootParameters:std::move(self->m_boot_parameters) viewController:self view:externalWindow.rootViewController.view.subviews.firstObject];
+  }
+  else
+  {
+    [MainiOS startEmulationWithBootParameters:std::move(self->m_boot_parameters) viewController:self view:self.m_renderer_view];
+  }
   
   [[TCDeviceMotion shared] stopMotionUpdates];
   
@@ -377,7 +442,9 @@
     
     [alert addAction:[UIAlertAction actionWithTitle:DOLocalizedString(@"No") style:UIAlertActionStyleDefault handler:nil]];
     
-    [alert addAction:[UIAlertAction actionWithTitle:DOLocalizedString(@"Yes") style:UIAlertActionStyleDestructive handler:^(UIAlertAction* action) {
+    [alert addAction:[UIAlertAction actionWithTitle:DOLocalizedString(@"Yes") style:UIAlertActionStyleDestructive handler:^(UIAlertAction* action)
+    {
+      [self tearDownExternalScreen];
       stop();
     }]];
     
@@ -385,6 +452,7 @@
   }
   else
   {
+    [self tearDownExternalScreen];
     stop();
   }
 }

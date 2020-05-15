@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E44D0A7246F329800A015B6 /* ExternalEmulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E44D0A6246F329800A015B6 /* ExternalEmulationViewController.m */; };
 		4EF97B4E23B6B8F300F13FCF /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EF97B4D23B6B8F300F13FCF /* DefaultPreferences.plist */; };
 		B91BF36E236B3FCE00199BA7 /* SoftwareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B91BF36D236B3FCE00199BA7 /* SoftwareTableViewCell.m */; };
 		B91BF374236B400200199BA7 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91BF373236B400200199BA7 /* SettingsTableViewController.m */; };
@@ -202,6 +203,8 @@
 		05AE8C3483D0363841E0B5B8 /* Pods-DolphiniOS.release (jailbroken).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DolphiniOS.release (jailbroken).xcconfig"; path = "Target Support Files/Pods-DolphiniOS/Pods-DolphiniOS.release (jailbroken).xcconfig"; sourceTree = "<group>"; };
 		1521D801248D252361AA5589 /* Pods-DolphiniOS.release (patreon non-jailbroken).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DolphiniOS.release (patreon non-jailbroken).xcconfig"; path = "Target Support Files/Pods-DolphiniOS/Pods-DolphiniOS.release (patreon non-jailbroken).xcconfig"; sourceTree = "<group>"; };
 		279BB209DB2DB8AF6B5FB5C5 /* Pods-DolphiniOS.release (non-jailbroken, no analytics).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DolphiniOS.release (non-jailbroken, no analytics).xcconfig"; path = "Target Support Files/Pods-DolphiniOS/Pods-DolphiniOS.release (non-jailbroken, no analytics).xcconfig"; sourceTree = "<group>"; };
+		4E44D0A5246F329800A015B6 /* ExternalEmulationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExternalEmulationViewController.h; sourceTree = "<group>"; };
+		4E44D0A6246F329800A015B6 /* ExternalEmulationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExternalEmulationViewController.m; sourceTree = "<group>"; };
 		4EF97B4D23B6B8F300F13FCF /* DefaultPreferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		731BA247DEFFCA151CF77CC8 /* Pods-DolphiniOS.release (non-jailbroken no analytics).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DolphiniOS.release (non-jailbroken no analytics).xcconfig"; path = "Target Support Files/Pods-DolphiniOS/Pods-DolphiniOS.release (non-jailbroken no analytics).xcconfig"; sourceTree = "<group>"; };
 		93227A79A53E50FE37648CB5 /* libPods-DolphiniOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DolphiniOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -704,6 +707,8 @@
 				B945A3902362D90200B21680 /* EAGLView.h */,
 				B945A3912362D90200B21680 /* EAGLView.m */,
 				B99B05B423A182B20076C7D8 /* Emulation.storyboard */,
+				4E44D0A5246F329800A015B6 /* ExternalEmulationViewController.h */,
+				4E44D0A6246F329800A015B6 /* ExternalEmulationViewController.m */,
 			);
 			path = Emulation;
 			sourceTree = "<group>";
@@ -1665,6 +1670,7 @@
 				B9BEADE423AF1A310014617A /* ControllerRootViewController.mm in Sources */,
 				B946AF17245BFF110043767A /* WiiSystemUpdateViewController.mm in Sources */,
 				B971E1F9245EB63E00D2A698 /* DebuggerUtils.m in Sources */,
+				4E44D0A7246F329800A015B6 /* ExternalEmulationViewController.m in Sources */,
 				B988D7FD23B604AB0092CB6C /* ControllerProfileCell.m in Sources */,
 				B971156423E15004001C6BD6 /* SpeedLimitViewController.mm in Sources */,
 				B971156B23E1D378001C6BD6 /* ConfigSoundViewController.mm in Sources */,
