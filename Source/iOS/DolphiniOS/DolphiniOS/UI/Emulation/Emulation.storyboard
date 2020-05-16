@@ -16,6 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connected to Display" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSB-JE-zxq">
+                                <rect key="frame" x="77" y="208.33333333333334" width="260.33333333333331" height="31.333333333333343"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <mtkView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="ODM-xp-bCF" userLabel="MTKView">
                                 <rect key="frame" x="0.0" y="88" width="414" height="387"/>
                                 <gestureRecognizers/>
@@ -84,8 +90,10 @@
                             <constraint firstItem="73U-sK-RYp" firstAttribute="top" secondItem="Dzs-Je-a4O" secondAttribute="top" constant="8" id="nAj-Ci-3sW"/>
                             <constraint firstItem="daX-vt-kk3" firstAttribute="leading" secondItem="Dzs-Je-a4O" secondAttribute="leading" id="scI-dh-7aD"/>
                             <constraint firstItem="Dzs-Je-a4O" firstAttribute="centerY" secondItem="daX-vt-kk3" secondAttribute="bottom" id="uhM-Ah-BI9"/>
+                            <constraint firstItem="uSB-JE-zxq" firstAttribute="centerY" secondItem="MkU-9V-PoJ" secondAttribute="centerY" multiplier="0.5" id="vfc-6g-rnB"/>
                             <constraint firstItem="ODM-xp-bCF" firstAttribute="bottom" secondItem="Dzs-Je-a4O" secondAttribute="centerY" id="xPp-nK-9tw"/>
                             <constraint firstItem="Dzs-Je-a4O" firstAttribute="leading" secondItem="YWH-fQ-xGM" secondAttribute="leading" id="yCl-wb-fOr"/>
+                            <constraint firstItem="uSB-JE-zxq" firstAttribute="centerX" secondItem="MkU-9V-PoJ" secondAttribute="centerX" id="yRl-8V-guM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dzs-Je-a4O"/>
                         <variation key="default">
@@ -126,6 +134,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="m_display_connected_label" destination="uSB-JE-zxq" id="Xlb-Ja-G5M"/>
                         <outlet property="m_eagl_bottom_constraint" destination="L1v-Zt-8lf" id="DEm-Su-fgy"/>
                         <outlet property="m_eagl_half_constraint" destination="uhM-Ah-BI9" id="ycb-tf-3pS"/>
                         <outlet property="m_eagl_view" destination="daX-vt-kk3" id="9Fx-FT-ga5"/>

@@ -161,8 +161,9 @@
   externalWindow = [[UIWindow alloc] initWithFrame:screen.bounds];
   externalWindow.rootViewController = vc;
   externalWindow.screen = screen;
-  
   externalWindow.hidden = false;
+  
+  [self startAnimatingDisplayConnectedLabel];
 }
 
 - (void)tearDownExternalScreen
@@ -171,7 +172,27 @@
   {
     externalWindow.hidden = true;
     externalWindow = nil;
+    
+    // Stop display connected label animation and re-hide
+    [self.m_display_connected_label.layer removeAllAnimations];
+    self.m_display_connected_label.hidden = true;
   }
+}
+
+// Fade in/out connected display label to prevent burn-in on OLED displays
+- (void)startAnimatingDisplayConnectedLabel
+{
+  self.m_display_connected_label.hidden = false;
+  self.m_display_connected_label.alpha = 0;
+
+  [UIView animateWithDuration:4
+          delay:0
+          options: UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
+          animations:^
+          {
+               self.m_display_connected_label.alpha = 1;
+          } completion:nil
+  ];
 }
 
 - (void)StartEmulation

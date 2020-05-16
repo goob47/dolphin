@@ -61,6 +61,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic) UIBarButtonItem* m_pause_button;
 @property(nonatomic) UIBarButtonItem* m_play_button;
 
+@property (weak, nonatomic) IBOutlet UILabel* m_display_connected_label;
+
 - (void)RunningTitleUpdated;
 - (void)PopulatePortDictionary;
 - (void)ChangeVisibleTouchControllerToPort:(int)port;
