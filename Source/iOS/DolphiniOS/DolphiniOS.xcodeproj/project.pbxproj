@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E44D0A7246F329800A015B6 /* ExternalEmulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E44D0A6246F329800A015B6 /* ExternalEmulationViewController.m */; };
+		4E7FB8DE246F74F5009F19BD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7FB8DD246F74F5009F19BD /* AVFoundation.framework */; };
 		4EF97B4E23B6B8F300F13FCF /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4EF97B4D23B6B8F300F13FCF /* DefaultPreferences.plist */; };
 		B91BF36E236B3FCE00199BA7 /* SoftwareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B91BF36D236B3FCE00199BA7 /* SoftwareTableViewCell.m */; };
 		B91BF374236B400200199BA7 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B91BF373236B400200199BA7 /* SettingsTableViewController.m */; };
@@ -205,6 +206,7 @@
 		279BB209DB2DB8AF6B5FB5C5 /* Pods-DolphiniOS.release (non-jailbroken, no analytics).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DolphiniOS.release (non-jailbroken, no analytics).xcconfig"; path = "Target Support Files/Pods-DolphiniOS/Pods-DolphiniOS.release (non-jailbroken, no analytics).xcconfig"; sourceTree = "<group>"; };
 		4E44D0A5246F329800A015B6 /* ExternalEmulationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExternalEmulationViewController.h; sourceTree = "<group>"; };
 		4E44D0A6246F329800A015B6 /* ExternalEmulationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExternalEmulationViewController.m; sourceTree = "<group>"; };
+		4E7FB8DD246F74F5009F19BD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4EF97B4D23B6B8F300F13FCF /* DefaultPreferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		731BA247DEFFCA151CF77CC8 /* Pods-DolphiniOS.release (non-jailbroken no analytics).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DolphiniOS.release (non-jailbroken no analytics).xcconfig"; path = "Target Support Files/Pods-DolphiniOS/Pods-DolphiniOS.release (non-jailbroken no analytics).xcconfig"; sourceTree = "<group>"; };
 		93227A79A53E50FE37648CB5 /* libPods-DolphiniOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DolphiniOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -589,6 +591,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E7FB8DE246F74F5009F19BD /* AVFoundation.framework in Frameworks */,
 				B91BF388236BFAF700199BA7 /* libMoltenVK.dylib in Frameworks */,
 				B95A09492385DE9600DBBB01 /* CoreAudio.framework in Frameworks */,
 				B95A094A2385DE9600DBBB01 /* AudioToolbox.framework in Frameworks */,
@@ -799,6 +802,7 @@
 		B945A3932362D98300B21680 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E7FB8DD246F74F5009F19BD /* AVFoundation.framework */,
 				B9DCAC9E23AC9C83002B95C8 /* GameController.framework */,
 				B99B05BE23A323600076C7D8 /* MetalKit.framework */,
 				B95A09472385DE9600DBBB01 /* AudioToolbox.framework */,

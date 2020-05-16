@@ -27,6 +27,8 @@
 #import <FirebaseAnalytics/FirebaseAnalytics.h>
 #import <FirebaseCrashlytics/FirebaseCrashlytics.h>
 
+#import "AVFoundation/AVAudioSession.h"
+
 #import "InputCommon/ControllerEmu/ControlGroup/Attachments.h"
 #import "InputCommon/ControllerEmu/ControllerEmu.h"
 #import "InputCommon/InputConfig.h"
@@ -163,7 +165,7 @@
   externalWindow.screen = screen;
   externalWindow.hidden = false;
   
-  [self startAnimatingDisplayConnectedLabel];
+  [self setupDisplayConnectedLabel];
 }
 
 - (void)tearDownExternalScreen
@@ -179,12 +181,27 @@
   }
 }
 
-// Fade in/out connected display label to prevent burn-in on OLED displays
-- (void)startAnimatingDisplayConnectedLabel
+- (void)setupDisplayConnectedLabel
 {
+  // Get the name of the connected display/device
+  AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+  AVAudioSessionRouteDescription *currentRoute = audioSession.currentRoute;
+  for (AVAudioSessionPortDescription *outputPort in currentRoute.outputs)
+  {
+    if ([outputPort.portType isEqualToString:AVAudioSessionPortAirPlay])
+    {
+      NSString *connectedDeviceName = outputPort.portName;
+      self.m_display_connected_label.text = [NSString stringWithFormat:@"Connected to %@", connectedDeviceName];
+    }
+    else{
+      // Using some sort of HDMI adapter, display generic name
+      self.m_display_connected_label.text = @"Connected to Display";
+    }
+  }
+  
+  // Fade in/out connected display label to prevent burn-in on OLED displays
   self.m_display_connected_label.hidden = false;
   self.m_display_connected_label.alpha = 0;
-
   [UIView animateWithDuration:4
           delay:0
           options: UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
