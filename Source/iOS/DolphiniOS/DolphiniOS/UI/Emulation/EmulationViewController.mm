@@ -163,6 +163,7 @@
   externalWindow = [[UIWindow alloc] initWithFrame:screen.bounds];
   externalWindow.rootViewController = vc;
   externalWindow.screen = screen;
+  externalWindow.screen.overscanCompensation = UIScreenOverscanCompensationScale;
   externalWindow.hidden = false;
   
   [self setupDisplayConnectedLabel];
